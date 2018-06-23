@@ -1,9 +1,9 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import * as defaultStyle from '../../../style';
 
 const STYLESHEET_ID = 'stylesheet.day.period';
 
-const FILLER_HEIGHT = 34;
+const FILLER_HEIGHT = 32;
 
 export default function styleConstructor(theme={}) {
   const appStyle = {...defaultStyle, ...theme};
@@ -11,12 +11,11 @@ export default function styleConstructor(theme={}) {
     wrapper: {
       flex: 1,
       alignItems: 'center',
-      alignSelf: 'stretch',
-      marginLeft: -1
+      alignSelf: 'stretch'
     },
     base: {
       //borderWidth: 1,
-      width: 38,
+      width: 32,
       height: FILLER_HEIGHT,
       alignItems: 'center'
     },
@@ -36,17 +35,15 @@ export default function styleConstructor(theme={}) {
       flex: 1
     },
     text: {
-      marginTop: 7,
-      fontSize: appStyle.textDayFontSize,
-      fontFamily: appStyle.textDayFontFamily,
-      fontWeight: '300',
-      color: appStyle.dayTextColor || '#2d4150',
-      backgroundColor: 'rgba(255, 255, 255, 0)'
+        marginTop: Platform.OS === 'android' ? 4 : 6,
+        fontSize: appStyle.textDayFontSize,
+        fontFamily: appStyle.textDayFontFamily,
+        fontWeight: '300',
+        color: appStyle.dayTextColor,
+        backgroundColor: 'rgba(255, 255, 255, 0)'
     },
     todayText: {
-      fontWeight: '500',
-      color: theme.todayTextColor || appStyle.dayTextColor,
-      //color: appStyle.textLinkColor
+        color: appStyle.todayTextColor
     },
     disabledText: {
       color: appStyle.textDisabledColor
